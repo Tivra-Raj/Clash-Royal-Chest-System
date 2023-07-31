@@ -15,5 +15,7 @@ namespace ChestMVC
         public int MaximumRewardGems;
 
         public int ChestUnlockDuration; //in minutes
+
+        public ChestView ChestPrefab;
     }
 }

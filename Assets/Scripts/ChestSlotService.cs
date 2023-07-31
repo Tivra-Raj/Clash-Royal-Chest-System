@@ -6,7 +6,9 @@ namespace Assets.Scripts
 {
     public class ChestSlotService : MonoSingletonGeneric<ChestSlotService>
     {
-        [SerializeField] private List<ChestSlotController> slotList;
+        [SerializeField] public List<ChestSlotController> slotList;
+
+        public ChestSlotController ChestSlotController { get; private set; }
 
         public ChestSlotController GetEmptySlot()
         {
@@ -22,5 +24,15 @@ namespace Assets.Scripts
             }
             return chestSlotController;
         }
+
+        /*public RectTransform GetChestSlotPosition()
+        {
+            for (int i = 0; i < slotList.Count; i++)
+            {
+                slotTransform = slotList[i].GetSlotTransform();
+            }
+            return slotTransform;
+        }*/
+
     }
 }

@@ -9,7 +9,7 @@ public class ChestSlotController
     //private ChestController chestController;
     private bool isEmpty = true;
 
-    //public void SetController(ChestController controller) => chestController = controller;
+    //public void SetController(ChestSlotController controller) => chestController = controller;
     //public ChestController GetController() => chestController;
     public bool GetIsSlotEmpty() => isEmpty;
     public void SetSlotIsEmpty(bool value) => isEmpty = value;

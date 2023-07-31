@@ -15,5 +15,10 @@ namespace ChestMVC
             ChestModel.SetChestController(this);
             ChestView.SetChestController(this);
         }
+
+        public void Configure(RectTransform transform)
+        {
+            ChestView.transform.position = transform.position;
+        }
     }
 }
