@@ -24,15 +24,5 @@ namespace Assets.Scripts
             }
             return chestSlotController;
         }
-
-        /*public RectTransform GetChestSlotPosition()
-        {
-            for (int i = 0; i < slotList.Count; i++)
-            {
-                slotTransform = slotList[i].GetSlotTransform();
-            }
-            return slotTransform;
-        }*/
-
     }
 }

@@ -1,5 +1,4 @@
-﻿using System;
-using TMPro;
+﻿using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,8 +11,8 @@ namespace ChestMVC
         [SerializeField] private RectTransform chestRectTransform;
         [SerializeField] private Image chestImage;
         [SerializeField] private Button chestButton;
-        [SerializeField] private TextMeshProUGUI topText;
-        [SerializeField] private TextMeshProUGUI bottomText;
+        [SerializeField] private TextMeshProUGUI chestStateText;
+        [SerializeField] private TextMeshProUGUI chestTimerText;
 
         public int TimeRemainingSeconds { get; private set; }
 
