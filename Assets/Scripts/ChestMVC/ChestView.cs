@@ -1,4 +1,6 @@
-﻿using TMPro;
+﻿using Assets.Scripts;
+using ChestStates;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,12 +9,23 @@ namespace ChestMVC
     public class ChestView : MonoBehaviour
     {
         public ChestController ChestController { get; private set; }
+        public ChestSlotController chestSlotController;
 
         [SerializeField] private RectTransform chestRectTransform;
-        [SerializeField] private Image chestImage;
-        [SerializeField] private Button chestButton;
-        [SerializeField] private TextMeshProUGUI chestStateText;
-        [SerializeField] private TextMeshProUGUI chestTimerText;
+        [SerializeField] public Image chestImage;
+        [SerializeField] public Button chestButton;
+        [SerializeField] public TextMeshProUGUI chestStateText;
+        [SerializeField] public TextMeshProUGUI chestTimerText;
+
+        [Header("Chest states")]
+        public ChestLockedState chestLockedState;
+        public ChestUnlockingState chestUnlockingState;
+        public ChestUnlockedState chestUnlockedState;
+        public ChestState chestCurrentState;
+
+
+        [SerializeField] private ChestStateEnum initialState;
+        public ChestStateEnum activeState;
 
         public int TimeRemainingSeconds { get; private set; }
 
@@ -20,37 +33,58 @@ namespace ChestMVC
 
         public void SetChestAtSlot(ChestSlotController slot)
         {
+            chestSlotController = slot;
             chestRectTransform.position = slot.GetSlotTransform().position;
+
+            for (int i = 0; i < ChestSlotService.Instance.slotList.Count; i++)
+            {
+                ChestSlotService.Instance.slotList[i].SetChestControllerAtSlot(ChestController);
+            }
+        }
+
+        public ChestController GetChestFromSlot(ChestController chestController)
+        {
+            for (int i = 0; i < ChestSlotService.Instance.slotList.Count ; i++)
+            {
+                chestController =  ChestSlotService.Instance.slotList[i].GetChestControllerFromSlot();
+            }
+            return chestController;
         }
 
         private void Awake() => transform.SetParent(ChestService.Instance.ChestHolder);
 
-        /*public void DestroyChest()
-        {
-            slot.SetIsEmpty(true);
-            chestButton.onClick.RemoveAllListeners();
-            chestController.RemoveView();
-        }*/
+        private void Start() => InitializeChestState();
 
-        /*public IEnumerator CountDown()
+        private void Update()
         {
-            while (TimeRemainingSeconds >= 0)
-            {
-                TimeSpan timeSpan = TimeSpan.FromSeconds(TimeRemainingSeconds);
-                string timeString = timeSpan.ToString(@"hh\:mm\:ss");
-                BottomText.text = timeString;
-
-                TimeRemainingSeconds--;
-                yield return new WaitForSeconds(1);
-            }
-            chestController.UnlockNow();
-        }*/
+            Debug.Log(chestCurrentState);
+            chestButton.onClick.AddListener(chestCurrentState.ChestButtonAction);
+            UIService.Instance.StartUnlockButton.onClick.AddListener(chestLockedState.UnlockNowChest);
+        }
 
         public void InitialSettings()
         {
             chestImage.sprite = ChestController.ChestModel.ChestClosedImage;
-            //TimeRemainingSeconds = ChestController.ChestModel.UnlockDurationMinutes * 60;
-            //chestButton.onClick.AddListener(chestController.ChestButtonAction);
+        }
+
+        private void InitializeChestState()
+        {
+            switch (initialState)
+            {
+                case ChestStateEnum.Locked:
+                    chestCurrentState = chestLockedState;
+                    break;
+                case ChestStateEnum.Unlocking:
+                    chestCurrentState = chestUnlockingState;
+                    break;
+                case ChestStateEnum.Unlocked:
+                    chestCurrentState = chestUnlockedState;
+                    break;
+                default:
+                    chestCurrentState = null;
+                    break;
+            }
+            chestCurrentState.OnStateEnter();
         }
     }
 }

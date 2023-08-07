@@ -43,7 +43,6 @@ namespace ChestSystem.Utilities
             {
                 pooledItem.isUsed = false;
             }
-
         }
 
         public class PooledItem<t>

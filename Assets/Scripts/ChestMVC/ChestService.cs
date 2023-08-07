@@ -1,4 +1,5 @@
 ﻿using Assets.Scripts;
+using ChestStates;
 using ChestSystem.Utilities;
 using UnityEngine;
 
@@ -16,25 +17,25 @@ namespace ChestMVC
         private void Start()
         {
             chestPool = GetComponent<ChestPool>();
-
-            for (int i = 0; i < 4; i++)
-            {
-                SpawnRandomChest();
-            }
         }
 
-        private void SpawnRandomChest()
-        {
-            CreateNewChest();
-        }
 
-        private ChestController CreateNewChest()
+        public void SpawnRandomChest()
         {
             ChestSlotController slot = ChestSlotService.Instance.GetEmptySlot();
+            if (slot == null)
+            {
+                UIService.Instance.EnableSlotsFullPopUp();
+                return;
+            }
+            CreateNewChest(slot);
+        }
 
-            int pickRandomTank = Random.Range(0, ConfigChest.Length);
+        private ChestController CreateNewChest(ChestSlotController slot)
+        {
+            int pickRandomChest = Random.Range(0, ConfigChest.Length);
 
-            ChestScriptableObject chestScriptableObject = ConfigChest[pickRandomTank];
+            ChestScriptableObject chestScriptableObject = ConfigChest[pickRandomChest];
             ChestModel chestModel = new ChestModel(chestScriptableObject);
            
             ChestController = chestPool.GetChest(chestModel, chestScriptableObject.ChestPrefab);
@@ -45,5 +46,18 @@ namespace ChestMVC
         }
 
         public void ReturnChestToPool(ChestController chestToReturn) => chestPool.ReturnItem(chestToReturn);
+
+        public bool CheckIfAnyChestUnlocking()
+        {
+            for (int i = 0; i < ChestSlotService.Instance.slotList.Count; i++)
+            {
+                ChestSlotController chestSlotController = ChestSlotService.Instance.slotList[i];
+                if (chestSlotController.GetChestControllerFromSlot().ChestView.activeState == ChestStateEnum.Unlocking)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
     }
 }

@@ -20,5 +20,27 @@ namespace ChestMVC
         {
             ChestView.transform.position = transform.position;
         }
+
+        public void UnlockNow()
+        {
+            /*PlayerService.Instance.DecrementGems(currentState.GetRequiredGemsToUnlock());
+
+            currentState.OnStateDisable();
+            currentState = chestUnlocked;
+            currentState.OnStateEnable();*/
+        }
+        public void StartUnlocking()
+        {
+            /*currentState.OnStateDisable();
+            currentState = chestUnlocking;
+            currentState.OnStateEnable();*/
+        }
+
+        public void DestroyChest()
+        {
+            ChestView.chestSlotController.SetSlotIsEmpty(true);
+            ChestView.gameObject.SetActive(false);
+            ChestService.Instance.ReturnChestToPool(this);
+        }
     }
 }

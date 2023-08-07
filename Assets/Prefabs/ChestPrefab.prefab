@@ -297,6 +297,9 @@ GameObject:
   m_Component:
   - component: {fileID: 4379541800448206275}
   - component: {fileID: 1905741785082046457}
+  - component: {fileID: 3094899908849188878}
+  - component: {fileID: 4884834701504719172}
+  - component: {fileID: 8020803990034418742}
   - component: {fileID: 3044988445411115716}
   m_Layer: 0
   m_Name: ChestPrefab
@@ -344,9 +347,54 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   chestRectTransform: {fileID: 4379541800448206275}
   chestImage: {fileID: 7643256225030904662}
-  chestButton: {fileID: 0}
-  chestStateText: {fileID: 0}
-  chestTimerText: {fileID: 0}
+  chestButton: {fileID: 9186894470003599764}
+  chestStateText: {fileID: 5532287247238637416}
+  chestTimerText: {fileID: 972535703401437230}
+  chestLockedState: {fileID: 3094899908849188878}
+  chestUnlockingState: {fileID: 4884834701504719172}
+  chestUnlockedState: {fileID: 8020803990034418742}
+  chestCurrentState: {fileID: 3094899908849188878}
+  initialState: 1
+  activeState: 0
+--- !u!114 &3094899908849188878
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928226884427186702}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d8bcd77f3a806764396068f0be2c0e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestPrefab: {fileID: 1905741785082046457}
+--- !u!114 &4884834701504719172
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928226884427186702}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d43f5a69ccc457f4890a0a325cfa5222, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestPrefab: {fileID: 1905741785082046457}
+--- !u!114 &8020803990034418742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928226884427186702}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f98d23ba03085374b9ebf79345491c3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  chestPrefab: {fileID: 1905741785082046457}
 --- !u!222 &3044988445411115716
 CanvasRenderer:
   m_ObjectHideFlags: 0

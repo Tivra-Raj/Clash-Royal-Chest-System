@@ -383,7 +383,6 @@ RectTransform:
   - {fileID: 740618140}
   - {fileID: 1378880164}
   - {fileID: 531383080}
-  - {fileID: 1113083196}
   - {fileID: 1360599822}
   m_Father: {fileID: 0}
   m_RootOrder: 2
@@ -3439,12 +3438,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1113083193}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -960, y: -540, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 35815460}
-  m_RootOrder: -1
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1129181512
 GameObject:
@@ -4494,10 +4493,11 @@ MonoBehaviour:
   closeChestSlotsFull: {fileID: 970210786}
   chestPopUp: {fileID: 740618139}
   closeChestPopUp: {fileID: 878209285}
+  startUnlockButton: {fileID: 2104369678}
   unlockNowButton: {fileID: 1426542652}
   unlockText: {fileID: 1961310123}
-  setTimerButton: {fileID: 2104369678}
   rewardPopUp: {fileID: 531383079}
+  closeRewardPopUP: {fileID: 260248498}
   giftCoinText: {fileID: 1981886724}
   giftGemText: {fileID: 979894549}
   coins: {fileID: 580707500}

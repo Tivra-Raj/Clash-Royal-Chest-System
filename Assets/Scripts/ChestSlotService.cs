@@ -24,5 +24,10 @@ namespace Assets.Scripts
             }
             return chestSlotController;
         }
+
+        public ChestSlotController GetSlotPosition(int i)
+        {
+            return slotList[i];
+        }
     }
 }
