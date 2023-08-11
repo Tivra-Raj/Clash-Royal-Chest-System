@@ -1,5 +1,4 @@
 ﻿using Assets.Scripts;
-using ChestMVC;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -10,6 +9,7 @@ namespace ChestStates
     {
         int TimeRemainingSeconds;
         private Coroutine countDown;
+
         public override void OnStateEnter()
         {
             base.OnStateEnter();
@@ -25,7 +25,7 @@ namespace ChestStates
             StopCoroutine(countDown);
         }
 
-        public override void ChestButtonAction()
+        public override void OnChestButtonAction()
         {
             //unlockText.text = "Unlock Now: " + GetRequiredGemsToUnlock().ToString();
             /*unlockNowButton.gameObject.SetActive(true);
@@ -42,7 +42,7 @@ namespace ChestStates
 
         public IEnumerator CountDown()
         {
-            TimeRemainingSeconds = chestPrefab.ChestController.ChestModel.ChestUnlockDuration * 60;
+            TimeRemainingSeconds = chestPrefab.ChestController.ChestModel.ChestUnlockDuration / 60;
             while (TimeRemainingSeconds >= 0)
             {
                 TimeSpan timeSpan = TimeSpan.FromSeconds(TimeRemainingSeconds);

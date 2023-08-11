@@ -19,4 +19,3 @@ MonoBehaviour:
   MinimumRewardGems: 0
   MaximumRewardGems: 0
   ChestUnlockDuration: 1
-  ChestPrefab: {fileID: 1905741785082046457, guid: 49a5cac31e6fc9e4d90922795af5c8a0, type: 3}

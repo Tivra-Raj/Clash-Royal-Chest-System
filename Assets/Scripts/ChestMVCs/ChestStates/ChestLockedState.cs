@@ -16,14 +16,6 @@ namespace ChestStates
         private Button setTimerButton;
         private Vector2 centerOfChestPopUp = new Vector2(0, 0);
 
-        public ChestLockedState(ChestController chestController)
-        {
-            this.chestController = chestController;
-            unlockNowButton = UIService.Instance.UnlockNowButton;
-            setTimerButton = UIService.Instance.StartUnlockButton;
-            unlockText = UIService.Instance.UnlockText;
-        }
-
         public override void OnStateEnter()
         {
             base.OnStateEnter();
@@ -37,7 +29,7 @@ namespace ChestStates
             base.OnStateExit();
         }
 
-        public override void ChestButtonAction()
+        public override void OnChestButtonAction()
         {
             //unlockText.text = "Unlock Now: " + GetRequiredGemsToUnlock().ToString();
             /*
@@ -53,24 +45,12 @@ namespace ChestStates
 
         public void UnlockNowChest()
         {
-            //unlockNowButton.onClick.AddListener();
             ChangeChestState(chestPrefab.chestUnlockingState);
-        }
-
-        public void OnStateEnable()
-        {
-            chestController.ChestView.chestStateText.text = "Locked";
-            unlockDurationMinutes = chestController.ChestModel.ChestUnlockDuration;
-            chestController.ChestView.chestTimerText.text = (unlockDurationMinutes < 60) ? unlockDurationMinutes.ToString() + " Min" : (unlockDurationMinutes / 60).ToString() + " Hr";
         }
         
         public void OnStateDisable()
         {
             UIService.Instance.DisableChestPopUp();
-        }
-        public ChestStateEnum GetChestState()
-        {
-            return ChestStateEnum.Locked;
         }
 
         /*public int GetRequiredGemsToUnlock()

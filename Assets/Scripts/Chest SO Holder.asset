@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88accd59a54123f43a8052e18c2f2b0c, type: 3}
+  m_Name: Chest SO Holder
+  m_EditorClassIdentifier: 
+  chestScriptableObjects:
+  - {fileID: 11400000, guid: 1c49215b5c71a0b47b89332a932f5e66, type: 2}
+  - {fileID: 11400000, guid: b21c03d84de323e46b540b71de858ef5, type: 2}
+  - {fileID: 11400000, guid: 8d0e04be0d34660499012495d5d796d7, type: 2}
+  - {fileID: 11400000, guid: de23434f067e3c741a7bb86bb20d24ff, type: 2}

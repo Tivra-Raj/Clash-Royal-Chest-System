@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-namespace ChestMVC
+namespace scriptableObject
 {
     [CreateAssetMenu(fileName = "NewChest", menuName = "SriptableObjects/CreateNewChest")]
     public class ChestScriptableObject : ScriptableObject
@@ -15,7 +15,5 @@ namespace ChestMVC
         public int MaximumRewardGems;
 
         public int ChestUnlockDuration; //in minutes
-
-        public ChestView ChestPrefab;
     }
 }

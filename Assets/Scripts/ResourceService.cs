@@ -9,7 +9,7 @@ namespace Assets.Scripts
 
         private void Start()
         {
-            gemsInAccount = 100;
+            gemsInAccount = 1000;
             coinsInAccount = 200;
         }
 

@@ -15,9 +15,10 @@ namespace ChestStates
         public override void OnStateExit()
         {
             base.OnStateExit();
+            UIService.Instance.DisableRewardPopUp();
         }
 
-        public override void ChestButtonAction()
+        public override void OnChestButtonAction()
         {
             //unlockText.text = "Unlock Now: " + GetRequiredGemsToUnlock().ToString();
             /*unlockNowButton.gameObject.SetActive(true);
@@ -28,9 +29,16 @@ namespace ChestStates
                 unlockButtonRectTransform.anchoredPosition = centerOfChestPopUp;
 
             unlockNowButton.onClick.AddListener(chestController.UnlockNow);
-            setTimerButton.onClick.AddListener(chestController.StartUnlocking);*/         
+            setTimerButton.onClick.AddListener(chestController.StartUnlocking);*/
+            UIService.OnChestPopUpClosed += DestroyChest;
             UIService.Instance.EnableRewardPopUp();
-            UIService.Instance.DisableChestPopUp();
+        }
+
+        private void DestroyChest()
+        {
+            UIService.OnChestPopUpClosed -= DestroyChest;
+            OnStateExit();
+            //chestPrefab.DestroyChest();
         }
     }
 }

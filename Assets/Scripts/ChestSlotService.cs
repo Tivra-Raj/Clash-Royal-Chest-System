@@ -1,33 +1,36 @@
 ﻿using ChestSystem.Utilities;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace Assets.Scripts
 {
     public class ChestSlotService : MonoSingletonGeneric<ChestSlotService>
     {
-        [SerializeField] public List<ChestSlotController> slotList;
 
-        public ChestSlotController ChestSlotController { get; private set; }
+        [SerializeField] private ChestSlotController[] chestSlots;
 
-        public ChestSlotController GetEmptySlot()
+        public RectTransform GetEmptyChestSlot()
         {
-            ChestSlotController chestSlotController = null;
-            for(int i=0; i < slotList.Count; i++)
+            for (int i = 0; i < chestSlots.Length; i++)
             {
-                if (slotList[i].GetIsSlotEmpty())
+                if (chestSlots[i].ChestSlotType == ChestSlotType.Empty)
                 {
-                    chestSlotController = slotList[i];
-                    chestSlotController.SetSlotIsEmpty(false);
+                    chestSlots[i].ChestSlotType = ChestSlotType.Filled;
+                    return chestSlots[i].GetSlotTransform();
+                }
+            }
+            return null;
+        }
+
+        public void ResetChestSlot(RectTransform chestSlotTransform)
+        {
+            for (int i = 0; i < chestSlots.Length; i++)
+            {
+                if (chestSlots[i].gameObject == chestSlotTransform.gameObject)
+                {
+                    chestSlots[i].ChestSlotType = ChestSlotType.Empty;
                     break;
                 }
             }
-            return chestSlotController;
-        }
-
-        public ChestSlotController GetSlotPosition(int i)
-        {
-            return slotList[i];
         }
     }
 }

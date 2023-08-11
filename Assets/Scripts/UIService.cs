@@ -15,8 +15,8 @@ namespace Assets.Scripts
         public Button StartUnlockButton { get { return startUnlockButton; } private set { } }
 
         public Button CloseRewardPopUP { get { return closeRewardPopUP; } private set { } }
-        public TextMeshProUGUI GiftCoinText { get { return giftCoinText; } private set { } }
-        public TextMeshProUGUI GiftGemText { get { return giftGemText; } private set { } }
+        public TextMeshProUGUI GiftCoinText { get { return rewardCoinText; } private set { } }
+        public TextMeshProUGUI GiftGemText { get { return rewardGemText; } private set { } }
 
         public TextMeshProUGUI UnlockText { get { return unlockText; } private set { } }
 
@@ -37,8 +37,8 @@ namespace Assets.Scripts
         [Header("Rewards Pop Up")]
         [SerializeField] private GameObject rewardPopUp;
         [SerializeField] private Button closeRewardPopUP;
-        [SerializeField] private TextMeshProUGUI giftCoinText;
-        [SerializeField] private TextMeshProUGUI giftGemText;
+        [SerializeField] private TextMeshProUGUI rewardCoinText;
+        [SerializeField] private TextMeshProUGUI rewardGemText;
 
         [Header("Player Stats")]
         [SerializeField] private TextMeshProUGUI coins;
@@ -54,8 +54,7 @@ namespace Assets.Scripts
         }
         public void EnableChestPopUp()
         {
-            chestPopUp.SetActive(true);
-            
+            chestPopUp.SetActive(true);  
         }
 
         public void EnableRewardPopUp()
@@ -68,7 +67,7 @@ namespace Assets.Scripts
             chestPopUp.SetActive(false);
             rewardPopUp.gameObject.SetActive(false);
 
-            OnChestPopUpClosed?.Invoke();
+            
             unlockNowButton.onClick.RemoveAllListeners();
             startUnlockButton.onClick.RemoveAllListeners();
         }
@@ -87,22 +86,38 @@ namespace Assets.Scripts
             chestPopUp.SetActive(false);
             rewardPopUp.gameObject.SetActive(false);
 
-            createChestButton.onClick.AddListener(ChestService.Instance.SpawnRandomChest);
+            createChestButton.onClick.AddListener(SpawnChest);
             closeChestSlotsFull.onClick.AddListener(DisableSlotsFullPopUp);
             closeChestPopUp.onClick.AddListener(DisableChestPopUp);
+            CloseRewardPopUP.onClick.AddListener(DisableRewardPopUp);
 
             RefreshPlayerStats();
         }
 
-        private void Update()
-        {
-            CloseRewardPopUP.onClick.AddListener(DisableRewardPopUp);
-        }
-
         public void DisableRewardPopUp()
         {
-            ChestService.Instance.ChestController.DestroyChest();
+            OnChestPopUpClosed?.Invoke();
             rewardPopUp.SetActive(false);
+            chestPopUp.SetActive(false);
+        }
+
+        public void SpawnChest()
+        {
+            ChestView chestPrefab = ChestService.Instance.GetChestFromPool();
+
+            if (chestPrefab != null)
+            {
+                RectTransform chestSlotTransform = ChestSlotService.Instance.GetEmptyChestSlot();
+                chestPrefab.transform.SetParent(chestSlotTransform, false);
+                chestPrefab.gameObject.SetActive(true);
+                //UpdateCoinAndGems(-EXPLORE_COST, 0);
+                //EventService.Instance.InvokeChestSpawnedEvent(chestConfig.CHEST_COINS_RANGE, chestConfig.CHEST_GEMS_RANGE, chestConfig.CHEST_TYPE);
+            }
+            else
+            {
+                EnableSlotsFullPopUp();
+               //EventService.Instance.InvokeSlotFullEvent();
+            }
         }
     }
 }

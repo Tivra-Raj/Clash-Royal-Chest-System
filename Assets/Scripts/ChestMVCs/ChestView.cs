@@ -1,5 +1,4 @@
-﻿using Assets.Scripts;
-using ChestStates;
+﻿using ChestStates;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -9,7 +8,8 @@ namespace ChestMVC
     public class ChestView : MonoBehaviour
     {
         public ChestController ChestController { get; private set; }
-        public ChestSlotController chestSlotController;
+
+        private ChestSlotController chestSlotController;
 
         [SerializeField] private RectTransform chestRectTransform;
         [SerializeField] public Image chestImage;
@@ -31,43 +31,23 @@ namespace ChestMVC
 
         public void SetChestController(ChestController chestController) => ChestController = chestController;
 
-        public void SetChestAtSlot(ChestSlotController slot)
+        public void SetChestPosition(ChestSlotController slotPosition)
         {
-            chestSlotController = slot;
-            chestRectTransform.position = slot.GetSlotTransform().position;
-
-            for (int i = 0; i < ChestSlotService.Instance.slotList.Count; i++)
-            {
-                ChestSlotService.Instance.slotList[i].SetChestControllerAtSlot(ChestController);
-            }
+            chestSlotController = slotPosition;
+            chestRectTransform.position = chestSlotController.GetSlotTransform().position;
         }
 
-        public ChestController GetChestFromSlot(ChestController chestController)
+        private void Start()
         {
-            for (int i = 0; i < ChestSlotService.Instance.slotList.Count ; i++)
-            {
-                chestController =  ChestSlotService.Instance.slotList[i].GetChestControllerFromSlot();
-            }
-            return chestController;
+            chestButton.onClick.AddListener(chestCurrentState.OnChestButtonAction);
         }
 
-        private void Awake() => transform.SetParent(ChestService.Instance.ChestHolder);
-
-        private void Start() => InitializeChestState();
-
-        private void Update()
+        /*public void OnChestClicked()
         {
-            Debug.Log(chestCurrentState);
-            chestButton.onClick.AddListener(chestCurrentState.ChestButtonAction);
-            UIService.Instance.StartUnlockButton.onClick.AddListener(chestLockedState.UnlockNowChest);
-        }
+            chestController.OnChestButtonClicked();
+        }*/
 
-        public void InitialSettings()
-        {
-            chestImage.sprite = ChestController.ChestModel.ChestClosedImage;
-        }
-
-        private void InitializeChestState()
+        public void InitializeChestState()
         {
             switch (initialState)
             {

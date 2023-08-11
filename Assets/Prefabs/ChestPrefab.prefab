@@ -187,7 +187,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.6, y: -72}
+  m_AnchoredPosition: {x: 0, y: -72}
   m_SizeDelta: {x: 142.6747, y: 43.862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7992413120936022752
@@ -299,7 +299,7 @@ GameObject:
   - component: {fileID: 1905741785082046457}
   - component: {fileID: 3094899908849188878}
   - component: {fileID: 4884834701504719172}
-  - component: {fileID: 8020803990034418742}
+  - component: {fileID: 3694161658204509094}
   - component: {fileID: 3044988445411115716}
   m_Layer: 0
   m_Name: ChestPrefab
@@ -352,7 +352,7 @@ MonoBehaviour:
   chestTimerText: {fileID: 972535703401437230}
   chestLockedState: {fileID: 3094899908849188878}
   chestUnlockingState: {fileID: 4884834701504719172}
-  chestUnlockedState: {fileID: 8020803990034418742}
+  chestUnlockedState: {fileID: 3694161658204509094}
   chestCurrentState: {fileID: 3094899908849188878}
   initialState: 1
   activeState: 0
@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   chestPrefab: {fileID: 1905741785082046457}
---- !u!114 &8020803990034418742
+--- !u!114 &3694161658204509094
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -559,7 +559,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0.6, y: 71.931}
+  m_AnchoredPosition: {x: 0, y: 71.931}
   m_SizeDelta: {x: 142.6747, y: 43.862}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2617020991193041915

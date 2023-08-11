@@ -17,7 +17,7 @@ namespace ChestStates
             this.enabled = false;
         }
 
-        public virtual void ChestButtonAction()
+        public virtual void OnChestButtonAction()
         {
             this.enabled = true;
         }

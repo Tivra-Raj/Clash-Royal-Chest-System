@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7960d8d217cbd714497438bc75689831, type: 3}
-  m_Name: Legendary Chest
+  m_Name: Legandary Chest
   m_EditorClassIdentifier: 
   ChestClosedImage: {fileID: 21300000, guid: 18b32067d958cef40971f5664def4bbe, type: 3}
   ChestOpenImage: {fileID: 21300000, guid: d7e68983a48a6fa449d343658f4e7595, type: 3}
@@ -19,4 +19,3 @@ MonoBehaviour:
   MinimumRewardGems: 0
   MaximumRewardGems: 0
   ChestUnlockDuration: 1
-  ChestPrefab: {fileID: 1905741785082046457, guid: 49a5cac31e6fc9e4d90922795af5c8a0, type: 3}

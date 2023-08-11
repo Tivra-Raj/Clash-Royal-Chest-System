@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using scriptableObject;
+using UnityEngine;
 
 namespace ChestMVC
 {
@@ -12,9 +13,11 @@ namespace ChestMVC
         public int MaximumRewardGems { get; private set; }
         public int ChestUnlockDuration { get; private set; }
 
-        public ChestController ChestController { get; private set; }
+        public ChestType CHEST_TYPE { get; private set; }
 
-        public ChestModel(ChestScriptableObject chestScriptableObject)
+        private ChestController chestController;
+
+        public void SetChestConfiguration(ChestScriptableObject chestScriptableObject)
         {
             ChestClosedImage = chestScriptableObject.ChestClosedImage;
             ChestOpenImage = chestScriptableObject.ChestOpenImage;
@@ -28,6 +31,22 @@ namespace ChestMVC
             ChestUnlockDuration = chestScriptableObject.ChestUnlockDuration;
         }
 
-        public void SetChestController(ChestController chestController) => ChestController = chestController;
+        public void SetChestController(ChestController chestController) => this.chestController = chestController;
+
+        /*public void UpdateUnlockTime(float deltaTime)
+        {
+            UNLOCK_TIME = Mathf.Max(UNLOCK_TIME - deltaTime, 0);
+            GEMS_TO_UNLOCK = (int)Mathf.Ceil((UNLOCK_TIME / MAX_UNLOCK_TIME) * MAX_GEMS_TO_UNLOCK);
+        }*/
+
+    }
+
+    public enum ChestType
+    {
+        None,
+        Common,
+        Rare,
+        Epic,
+        Legendary,
     }
 }
