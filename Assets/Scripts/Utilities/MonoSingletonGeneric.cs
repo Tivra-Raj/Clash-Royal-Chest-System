@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace ChestSystem.Utilities
+namespace Utilities
 {
     public class MonoSingletonGeneric<T> : MonoBehaviour where T : MonoSingletonGeneric<T>
     {
