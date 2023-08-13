@@ -1,12 +1,14 @@
-﻿using ChestSystem.Utilities;
+﻿using Utilities;
 using UnityEngine;
 
-namespace Assets.Scripts
+namespace ChestSlot
 {
     public class ChestSlotService : MonoSingletonGeneric<ChestSlotService>
     {
 
         [SerializeField] private ChestSlotController[] chestSlots;
+
+        public bool IsChestUnlocking = false;
 
         public RectTransform GetEmptyChestSlot()
         {
@@ -21,7 +23,7 @@ namespace Assets.Scripts
             return null;
         }
 
-        public void ResetChestSlot(RectTransform chestSlotTransform)
+        public void ResetChestSlot(Transform chestSlotTransform)
         {
             for (int i = 0; i < chestSlots.Length; i++)
             {

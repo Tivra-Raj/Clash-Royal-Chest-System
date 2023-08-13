@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7960d8d217cbd714497438bc75689831, type: 3}
-  m_Name: Common Chest
+  m_Name: Epic Chest
   m_EditorClassIdentifier: 
-  ChestClosedImage: {fileID: 21300000, guid: 01ce1563c25b6ad4c839acae9572f1e2, type: 3}
-  ChestOpenImage: {fileID: 21300000, guid: 988776033ced13e46a0b49fb0e0f07ca, type: 3}
-  MinimumRewardCoins: 0
-  MaximumRewardCoins: 0
-  MinimumRewardGems: 0
-  MaximumRewardGems: 0
-  ChestUnlockDuration: 1
+  ChestClosedImage: {fileID: 21300000, guid: 3cfb667cd8237884a8d80d950ff4069f, type: 3}
+  ChestOpenImage: {fileID: 21300000, guid: 258696ac6cc2d994c9fd39c5ed14dded, type: 3}
+  MinimumRewardCoins: 500
+  MaximumRewardCoins: 1000
+  MinimumRewardGems: 100
+  MaximumRewardGems: 150
+  ChestUnlockDuration: 20

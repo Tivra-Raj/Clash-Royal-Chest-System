@@ -15,7 +15,7 @@ namespace ChestMVC
 
         public ChestType CHEST_TYPE { get; private set; }
 
-        private ChestController chestController;
+        private ChestController chestController; 
 
         public void SetChestConfiguration(ChestScriptableObject chestScriptableObject)
         {
@@ -32,13 +32,6 @@ namespace ChestMVC
         }
 
         public void SetChestController(ChestController chestController) => this.chestController = chestController;
-
-        /*public void UpdateUnlockTime(float deltaTime)
-        {
-            UNLOCK_TIME = Mathf.Max(UNLOCK_TIME - deltaTime, 0);
-            GEMS_TO_UNLOCK = (int)Mathf.Ceil((UNLOCK_TIME / MAX_UNLOCK_TIME) * MAX_GEMS_TO_UNLOCK);
-        }*/
-
     }
 
     public enum ChestType

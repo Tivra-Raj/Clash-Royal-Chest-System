@@ -6,12 +6,7 @@ namespace ChestMVC
     {
         private ChestView[] chestPool;
 
-        /*
-            Constructor to Generate Pool of Chest Gameobjects. 
-            Takes poolCount, Prefab and Parent Transform as parameters.
-            Also Sets Connections between ChestModel, ChestView & ChestController.
-        */
-        public ChestPool(int poolCount, ChestView chestPrefab, RectTransform slotPosition)
+        public ChestPool(int poolCount, ChestView chestPrefab, Transform slotPosition)
         {
             chestPool = new ChestView[poolCount];
             for (int i = 0; i < poolCount; i++)
@@ -28,10 +23,6 @@ namespace ChestMVC
             }
         }
 
-        /*
-            Fetches the ChestItem if it isn't active. If no objects are available, returns Null.
-            Returning NULL acts as Slots Full Mechanism.
-        */
         public ChestView GetChestItem()
         {
             for (int i = 0; i < chestPool.Length; i++)

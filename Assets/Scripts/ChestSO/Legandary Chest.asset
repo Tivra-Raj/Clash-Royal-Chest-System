@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7960d8d217cbd714497438bc75689831, type: 3}
-  m_Name: Rare Chest
+  m_Name: Legandary Chest
   m_EditorClassIdentifier: 
-  ChestClosedImage: {fileID: 21300000, guid: 5d0cca250002bdf4694cbe73685f735a, type: 3}
-  ChestOpenImage: {fileID: 21300000, guid: b06b0333bce93614084d77eed532e44f, type: 3}
-  MinimumRewardCoins: 0
-  MaximumRewardCoins: 0
-  MinimumRewardGems: 0
-  MaximumRewardGems: 0
-  ChestUnlockDuration: 1
+  ChestClosedImage: {fileID: 21300000, guid: 18b32067d958cef40971f5664def4bbe, type: 3}
+  ChestOpenImage: {fileID: 21300000, guid: d7e68983a48a6fa449d343658f4e7595, type: 3}
+  MinimumRewardCoins: 1500
+  MaximumRewardCoins: 2000
+  MinimumRewardGems: 150
+  MaximumRewardGems: 200
+  ChestUnlockDuration: 30
