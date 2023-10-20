@@ -116,29 +116,32 @@ namespace UIandResources
 
         private void ChestLockedStatePopUp(ChestStateEnum chestState, GameObject chestObject)
         {
-            EnableChestPopUp(chestState);
+            EnableChestPopUp(chestState, chestObject);
             startUnlockButton.onClick.AddListener(() => OnStartUnlockButtonClick(chestObject));
             unlockNowButton.onClick.AddListener(() => OnUnlockNowButtonClick(chestObject));
         }
 
         private void ChestUnlockingStatePopUp(ChestStateEnum chestState, GameObject chestObject)
         {
-            EnableChestPopUp(chestState);
+            EnableChestPopUp(chestState, chestObject);
         }
 
         private void ChestUnlockedStatePopUp(GameObject chestObject)
         {
-            ChestService.Instance.GiveRewards();
+            Debug.Log("chest unlock state pop up");
+            ChestService.Instance.GiveRewards(chestObject);
             EnableRewardPopUp();
         }
 
-        public void EnableChestPopUp(ChestStateEnum chestState)
+        public void EnableChestPopUp(ChestStateEnum chestState, GameObject chestObject)
         {
             chestPopUp.SetActive(true);
             if (chestState == ChestStateEnum.Locked)
             {
+                startUnlockButton.onClick.AddListener(() => OnStartUnlockButtonClick(chestObject));
                 unlockingChestPopUp.SetActive(false);
                 startUnlockBackgroundImage.gameObject.SetActive(false);
+
                 if (ChestSlotService.Instance.IsChestUnlocking == true)
                 {
                     startUnlockButton.gameObject.SetActive(true);
@@ -146,10 +149,19 @@ namespace UIandResources
                     startUnlockButton.enabled = false;
                     startUnlockText.text = "Another Unlock is still in progress!";
                     timerText.gameObject.SetActive(false);
-                }            
+                }
+                else
+                {
+                    startUnlockButton.gameObject.SetActive(true);
+                    startUnlockBackgroundImage.gameObject.SetActive(false);
+                    startUnlockButton.enabled = true;
+                    startUnlockText.text = "Start Unlock";
+                    timerText.gameObject.SetActive(true);
+                }
             }
             else if(chestState == ChestStateEnum.Unlocking)
             {
+                unlockNowButton.onClick.AddListener(() => OnUnlockNowButtonClick(chestObject));
                 startUnlockButton.gameObject.SetActive(false);
                 unlockingChestPopUp.SetActive(true);
             }

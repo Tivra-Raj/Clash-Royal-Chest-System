@@ -20,7 +20,7 @@ namespace ChestMVC
 
         public void SetChestController(ChestController chestController) => ChestController = chestController;
 
-        private void Update()
+        private void Start()
         {
             chestButton.onClick.AddListener(ChestController.OnChestButtonClicked);
         }

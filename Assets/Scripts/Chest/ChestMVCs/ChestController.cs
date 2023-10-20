@@ -36,13 +36,16 @@ namespace ChestMVC
 
         public int GetRequiredGemsToUnlock()
         {
-            return Mathf.CeilToInt(unlockDuration * 60 / gemsPerSecond);
+            int value = Mathf.CeilToInt(unlockDuration * 60 / gemsPerSecond);
+            Debug.Log(value);
+            return value;
         }
 
 
         public void OnChestButtonClicked()
         {
             ChestService.Instance.OnChestClicked(chestStateMachine.currentChestStateEnum, this);
+
             if(chestStateMachine.currentChestStateEnum == ChestStates.ChestStateEnum.Unlocked)
             {
                 ChestService.Instance.DestroyChest(this);
@@ -60,7 +63,8 @@ namespace ChestMVC
             {
                 chestStateMachine.GetChestLockedState().UnlockNow(chestObject);
             }
-            else if(chestStateMachine.currentChestStateEnum == ChestStates.ChestStateEnum.Unlocking)
+
+            if(chestStateMachine.currentChestStateEnum == ChestStates.ChestStateEnum.Unlocking)
             {
                 chestStateMachine.GetChestUnlockingState().UnlockNow(chestObject);
             }

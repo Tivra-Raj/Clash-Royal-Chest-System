@@ -65,7 +65,7 @@ namespace ChestMVC
 
         public void OnChestClicked(ChestStateEnum chestState, ChestController chestController)
         {
-           UIService.Instance.OnChestClicked(chestState, chestController.ChestView.gameObject);
+            UIService.Instance.OnChestClicked(chestState, chestController.ChestView.gameObject);
         }
 
         public void OnStartUnlocking(GameObject chestObject)
@@ -78,9 +78,9 @@ namespace ChestMVC
             ChestController.OnChestUnlockNow(ChestObject);
         }
 
-        public void GiveRewards()
+        public void GiveRewards(GameObject chestObject)
         {
-            ChestController.chestStateMachine.GetChestUnlockedState().Rewards();
+            ChestController.chestStateMachine.GetChestUnlockedState().Rewards(chestObject);
         }
     }
 }

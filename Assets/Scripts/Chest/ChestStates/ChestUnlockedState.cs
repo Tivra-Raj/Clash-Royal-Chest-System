@@ -26,16 +26,18 @@ namespace ChestStates
             UIService.Instance.DisableRewardPopUp();
         }
 
-        public void Rewards()
+        public void Rewards(GameObject chestObject)
         {
-            ChestController chestController = chestStateMachine.GetChestController();
+            //ChestController chestController = chestStateMachine.GetChestController();
+
+            ChestController chestController = chestObject.GetComponent<ChestView>().ChestController;
             int coinsMin = chestController.ChestModel.MinimumRewardCoins;
             int coinsMax = chestController.ChestModel.MaximumRewardCoins;
             int gemsMin = chestController.ChestModel.MinimumRewardGems;
             int gemsMax = chestController.ChestModel.MaximumRewardGems;
 
-            int RewardCoins = Random.Range(coinsMin, coinsMax + 1);
-            int RewardGems = Random.Range(gemsMin, gemsMax + 1);
+            int RewardCoins = Random.Range(coinsMin, coinsMax);
+            int RewardGems = Random.Range(gemsMin, gemsMax);
 
             UIService.Instance.RewardCoinText.text = "" + RewardCoins.ToString();
             UIService.Instance.RewardGemText.text = "" + RewardGems.ToString();

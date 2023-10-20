@@ -43,9 +43,6 @@ namespace ChestStates
                 UIService.Instance.DisableChestPopUp();
                 UIService.Instance.EnableInsufficiantResourcePopUp();
             }
-
         }
-
-        
     }
 }
